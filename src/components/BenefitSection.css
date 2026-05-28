@@ -3,62 +3,52 @@
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  padding: 1rem 0.5rem;
-  background-color: rgb(210, 194, 95);
+  padding: 60px 5%;
+  background-color: #f5f0e8;
 }
 
 .benefit-card {
   position: relative;
-  width: 400px;
-  height: 110px;
+  width: 350px;
+  height: 120px;
   background-size: cover;
   background-position: center;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.benefit-text1{
-  font-family: 'Livvic';
-  color: white;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-left: 90px;
+.benefit-card:hover {
+  transform: translateY(-5px);
 }
-.benefit-text2{
-  font-family: 'Livvic';
+
+.benefit-text1,
+.benefit-text2,
+.benefit-text3 {
+  font-family: 'Livvic', sans-serif;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
-  margin-left: 90px;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
-.benefit-text3{
-  font-family: 'Livvic';
-  color: white;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-left: 100px;
-}
-/* ✅ Mobile responsive for Benefits section */
+
 @media (max-width: 768px) {
   .benefits-wrapper {
     gap: 1rem;
-    padding: 2vh 3vw;
+    padding: 40px 4%;
   }
-
+  
   .benefit-card {
-    width: 90vw; /* Fit screen width on all phones */
-    height: auto; /* Adjust height automatically */
-    min-height: 100px;
+    width: 90%;
+    height: 100px;
   }
-
-  /* Text inside cards - same spacing for all phones */
+  
   .benefit-text1,
   .benefit-text2,
   .benefit-text3 {
-    font-size: clamp(0.8rem, 3.5vw, 1rem);
-    margin-left: 22vw; /* relative margin instead of px */
-    text-align: justify;
+    font-size: 0.85rem;
   }
 }

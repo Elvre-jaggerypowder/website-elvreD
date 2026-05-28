@@ -19,13 +19,14 @@ function HeroSection() {
 
       <div className="hero-text" data-aos="fade-down" data-aos-duration="1500">
         <h1>
-          Medicinally Pure <span>Jaggery Powder</span>
+          Cane Jaggery Products <span>Handcrafted by Farmers</span>
         </h1>
-        <p>Handcrafted By Farmers</p>
       </div>
 
       <Link to="/buynow">
-        <button className="buy-now-btn" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="1000">🛒Book Now</button>
+        <button className="buy-now-btn" data-aos="zoom-in" data-aos-delay="500">
+          🛒 Book Now
+        </button>
       </Link>
     </section>
   );

@@ -1,0 +1,113 @@
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #263C28 0%, #1a2e1a 100%);
+  padding: 20px;
+}
+
+.admin-login-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.admin-login-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.admin-login-card h2 {
+  font-family: 'Livvicsemibold';
+  color: #263C28;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.admin-login-subtitle {
+  font-family: 'centurygothic';
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.admin-login-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'centurygothic';
+  font-size: 0.9rem;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-form-group {
+  text-align: left;
+}
+
+.admin-form-group label {
+  display: block;
+  font-family: 'Livvic';
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.admin-form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'centurygothic';
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.admin-form-group input:focus {
+  outline: none;
+  border-color: #f1a40f;
+}
+
+.admin-login-btn {
+  background: #f1a40f;
+  color: #263C28;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-family: 'Livvicsemibold';
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.admin-login-btn:hover {
+  background: #e09500;
+}
+
+.admin-login-note {
+  font-family: 'centurygothic';
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .admin-login-card {
+    padding: 25px;
+  }
+  
+  .admin-login-card h2 {
+    font-size: 1.5rem;
+  }
+}

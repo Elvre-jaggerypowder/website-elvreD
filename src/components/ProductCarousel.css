@@ -68,19 +68,49 @@
   margin-bottom: 15px;
 }
 
+.product-stock {
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.in-stock {
+  color: #4CAF50;
+  font-family: 'centurygothic';
+}
+
+.out-of-stock {
+  color: #f44336;
+  font-family: 'centurygothic';
+}
+
 .product-btn {
   background-color: #263C28;
   color: white;
   border: none;
-  padding: 10px 25px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-family: 'Livvic';
   cursor: pointer;
   transition: background 0.3s;
+  margin: 5px;
+  font-size: 0.9rem;
 }
 
 .product-btn:hover {
   background-color: #f1a40f;
+}
+
+.add-to-cart-btn {
+  background-color: #f1a40f;
+  color: #263C28;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e09500;
+}
+
+.buy-now-btn-small {
+  background-color: #263C28;
 }
 
 @media (max-width: 768px) {
@@ -102,5 +132,10 @@
   
   .product-image {
     max-width: 150px;
+  }
+  
+  .product-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 }

@@ -1,48 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import React, { useState } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
+import { useCart } from '../context/CartContext';
+import './Navbar.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Auto-close menu after 5 seconds
-  useEffect(() => {
-    let timer;
-    if (menuOpen) {
-      timer = setTimeout(() => {
-        setMenuOpen(false);
-      }, 5000);
-    }
-
-    return () => clearTimeout(timer); // Clean up timer if user clicks early
-  }, [menuOpen]);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   const handleLinkClick = () => {
-    setMenuOpen(false); // Close menu when a link is clicked
+    setMenuOpen(false);
   };
+
+  const handleNavClick = (toElement) => {
+    setMenuOpen(false);
+    
+    if (isHomePage) {
+      // If already on home page, just scroll to the element
+      const element = document.getElementById(toElement);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, navigate to home page first, then scroll after page loads
+      // Store the target element in sessionStorage before navigation
+      sessionStorage.setItem('scrollTo', toElement);
+      window.location.href = '/';
+    }
+  };
+
+  // Check for stored scroll target after component mounts (for cross-page navigation)
+  React.useEffect(() => {
+    const scrollTarget = sessionStorage.getItem('scrollTo');
+    if (scrollTarget && location.pathname === '/') {
+      sessionStorage.removeItem('scrollTo');
+      // Small delay to ensure the page has loaded
+      setTimeout(() => {
+        const element = document.getElementById(scrollTarget);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  }, [location.pathname]);
 
   return (
     <header className="navbar">
       <div className="logo">
-        <img src={`${process.env.PUBLIC_URL}/assets/ELVRElogo1.png`} alt="Elvre Logo" />
+        <RouterLink to="/" onClick={handleLinkClick}>
+          <img src={`${process.env.PUBLIC_URL}/assets/ELVRElogo1.png`} alt="Elvre Logo" />
+        </RouterLink>
       </div>
 
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <ScrollLink to="hero" smooth={true} duration={500} offset={-70} onClick={handleLinkClick}>
+        <RouterLink to="/" onClick={handleLinkClick}>
           Home
-        </ScrollLink>
-        <ScrollLink to="about" smooth={true} duration={500} offset={-70} onClick={handleLinkClick}>
-          About Us
-        </ScrollLink>
-        <ScrollLink to="testimonial" smooth={true} duration={500} offset={-70} onClick={handleLinkClick}>
-          Testimonial
-        </ScrollLink>
-        <ScrollLink to="contact" smooth={true} duration={500} offset={-70} onClick={handleLinkClick}>
+        </RouterLink>
+        <RouterLink to="/products" onClick={handleLinkClick}>
+          Products
+        </RouterLink>
+        <RouterLink to="/blog" onClick={handleLinkClick}>
+          Blog
+        </RouterLink>
+        <RouterLink to="/our-story" onClick={handleLinkClick}>
+          Our Story
+        </RouterLink>
+        <button onClick={() => handleNavClick('testimonial')} className="nav-link-btn">
+          Testimonials
+        </button>
+        <button onClick={() => handleNavClick('contact')} className="nav-link-btn">
           Contact Us
-        </ScrollLink>
+        </button>
+        <RouterLink to="/cart" className="cart-link" onClick={handleLinkClick}>
+          <span className="cart-icon">🛒</span>
+          <span className="cart-text">Cart</span>
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+        </RouterLink>
       </div>
 
-      {/* Hamburger icon - visible only on mobile via CSS */}
       <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
         <div className="bar"></div>
         <div className="bar"></div>

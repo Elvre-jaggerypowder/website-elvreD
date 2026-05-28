@@ -1,40 +1,42 @@
+/* ========== GLOBAL APP STYLES ========== */
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-top: 50px;
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
   width: 100%;
+  min-height: 100vh;
+  background: #fffdf8;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-family: sans-serif;
-  box-sizing: border-box;
-}
-/* 🔒 Force container restrictions */
-section, div, img, header, footer {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-/* 🧱 Fix display issues */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-[data-aos] {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-body {
-  overflow-x: scroll;
 }
 
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: #fffdf8;
+}
 
+/* Consistent section spacing */
+section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* No unwanted margins between sections */
+.hero-section + .stats-section,
+.stats-section + .about-section,
+.about-section + .product-carousel-section {
+  margin-top: 0;
+}
+
+/* Touch & hover improvements */
+@media (max-width: 768px) {
+  button,
+  .buy-now-btn,
+  .product-btn,
+  .join-movement-btn,
+  .follow-btn {
+    min-height: 48px;
+  }
+  a, button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

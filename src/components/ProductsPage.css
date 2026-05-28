@@ -1,0 +1,38 @@
+.products-page {
+  min-height: 100vh;
+  background: #fffdf8;
+  padding-top: 100px;
+}
+
+.products-hero {
+  text-align: center;
+  padding: 60px 20px 20px;
+  background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+}
+
+.products-hero h1 {
+  font-family: 'Livvicsemibold';
+  font-size: 3rem;
+  color: #263C28;
+  margin-bottom: 15px;
+}
+
+.products-hero p {
+  font-family: 'centurygothic';
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .products-page {
+    padding-top: 80px;
+  }
+  
+  .products-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .products-hero p {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,332 @@
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.admin-header {
+  background: #263C28;
+  color: white;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.admin-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-logo {
+  height: 50px;
+}
+
+.admin-header h1 {
+  font-family: 'Livvicsemibold';
+  font-size: 1.5rem;
+}
+
+.admin-logout-btn {
+  background: #f1a40f;
+  color: #263C28;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Livvicsemibold';
+  transition: background 0.3s;
+}
+
+.admin-logout-btn:hover {
+  background: #e09500;
+}
+
+.admin-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 30px 40px;
+}
+
+.admin-message {
+  background: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'centurygothic';
+}
+
+.admin-actions {
+  margin-bottom: 30px;
+}
+
+.admin-add-btn {
+  background: #263C28;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Livvicsemibold';
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.admin-add-btn:hover {
+  background: #3a5a3a;
+}
+
+.admin-product-form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-product-form h3 {
+  font-family: 'Livvicsemibold';
+  color: #263C28;
+  margin-bottom: 20px;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-field.full-width {
+  grid-column: span 2;
+}
+
+.admin-field label {
+  font-family: 'Livvic';
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.admin-field input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'centurygothic';
+  font-size: 1rem;
+}
+
+.admin-field input:focus {
+  outline: none;
+  border-color: #f1a40f;
+}
+
+.admin-field small {
+  font-family: 'centurygothic';
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.admin-form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.admin-save-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Livvicsemibold';
+}
+
+.admin-save-btn:hover {
+  background: #45a049;
+}
+
+.admin-cancel-btn {
+  background: #999;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Livvicsemibold';
+}
+
+.admin-cancel-btn:hover {
+  background: #777;
+}
+
+.admin-products-table {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.admin-products-table h3 {
+  font-family: 'Livvicsemibold';
+  color: #263C28;
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.admin-products-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-products-table th,
+.admin-products-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-products-table th {
+  font-family: 'Livvicsemibold';
+  background: #f9f3e8;
+  color: #263C28;
+}
+
+.admin-products-table td {
+  font-family: 'centurygothic';
+}
+
+.stock-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.in-stock-badge {
+  background: #e8f5e9;
+  color: #4CAF50;
+}
+
+.out-of-stock-badge {
+  background: #ffebee;
+  color: #f44336;
+}
+
+.admin-actions-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-edit-btn {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Livvic';
+  font-size: 0.85rem;
+}
+
+.admin-edit-btn:hover {
+  background: #1976D2;
+}
+
+.admin-delete-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Livvic';
+  font-size: 0.85rem;
+}
+
+.admin-delete-btn:hover {
+  background: #d32f2f;
+}
+
+.admin-quick-update {
+  background: #fff8f0;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #f1a40f;
+}
+
+.admin-quick-update h3 {
+  font-family: 'Livvicsemibold';
+  color: #263C28;
+  margin-bottom: 10px;
+}
+
+.admin-quick-update p {
+  font-family: 'centurygothic';
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.admin-note {
+  font-size: 0.85rem;
+  color: #f1a40f !important;
+}
+
+.admin-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'centurygothic';
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 10px 15px;
+  }
+  
+  .admin-header h1 {
+    font-size: 1rem;
+  }
+  
+  .admin-logo {
+    height: 35px;
+  }
+  
+  .admin-container {
+    padding: 80px 15px 30px;
+  }
+  
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-field.full-width {
+    grid-column: span 1;
+  }
+  
+  .admin-actions-cell {
+    flex-direction: column;
+  }
+  
+  .admin-products-table th,
+  .admin-products-table td {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+}

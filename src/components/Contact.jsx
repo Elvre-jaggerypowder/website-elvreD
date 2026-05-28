@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import { supabase } from "../supabaseClient";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -18,29 +17,24 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("");
-
-    try {
-      const { error } = await supabase
-        .from("Feedbacks")
-        .insert([
-          {
-            name: formData.name,
-            label: formData.label,
-            message: formData.message,
-          },
-        ]);
-
-      if (error) {
-        console.error("Supabase insert error:", error);
-        setStatus("❌ Something went wrong. Please try again.");
-      } else {
-        setStatus("✅ Feedback Sent!");
-        setFormData({ name: "", label: "", message: "" });
-      }
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      setStatus("❌ Something went wrong. Please try again.");
-    }
+    
+    // Save to localStorage
+    const existingFeedbacks = localStorage.getItem("elvreFeedbacks");
+    const feedbacks = existingFeedbacks ? JSON.parse(existingFeedbacks) : [];
+    
+    const newFeedback = {
+      id: Date.now(),
+      ...formData,
+      created_at: new Date().toISOString()
+    };
+    
+    feedbacks.unshift(newFeedback);
+    localStorage.setItem("elvreFeedbacks", JSON.stringify(feedbacks));
+    
+    setStatus("✅ Feedback Sent! Thank you for your message.");
+    setFormData({ name: "", label: "", message: "" });
+    
+    setTimeout(() => setStatus(""), 3000);
   };
 
   return (
@@ -67,8 +61,7 @@ const ContactUs = () => {
             ADDRESS
             <strong>
               <br />
-              1st Floor, Sangam Tent House, Jawalapur, Haridwar, Uttrakhand,
-              249407
+              1st Floor, Sangam Tent House, Jawalapur, Haridwar, Uttrakhand, 249407
             </strong>
           </p>
         </div>
@@ -85,7 +78,7 @@ const ContactUs = () => {
           <input
             type="text"
             name="label"
-            placeholder="Your Label"
+            placeholder="Subject / Label"
             value={formData.label}
             onChange={handleChange}
             required

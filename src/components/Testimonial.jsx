@@ -3,47 +3,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "./Testimonial.css";
-import { supabase } from "../supabaseClient";
 
 const Testimonial = () => {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    const fetchFeedbacks = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("Feedbacks")
-          .select("id, name, message, label, created_at")
-          .order("created_at", { ascending: false })
-          .limit(3);
-
-        if (error) throw error;
-        setFeedbacks(data || []);
-      } catch (error) {
-        console.error("Error fetching feedbacks:", error.message);
+    const fetchFeedbacks = () => {
+      const savedFeedbacks = localStorage.getItem("elvreFeedbacks");
+      if (savedFeedbacks) {
+        const allFeedbacks = JSON.parse(savedFeedbacks);
+        setFeedbacks(allFeedbacks.slice(0, 3));
       }
     };
 
     fetchFeedbacks();
-
-    const channel = supabase
-      .channel("public:Feedbacks")
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "Feedbacks" },
-        (payload) => {
-          setFeedbacks((prev) => {
-            const updated = [payload.new, ...prev];
-            const unique = Array.from(new Map(updated.map((f) => [f.id, f])).values());
-            return unique.slice(0, 3);
-          });
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    
+    // Listen for new feedbacks
+    const handleStorageChange = () => fetchFeedbacks();
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   return (
@@ -52,7 +30,7 @@ const Testimonial = () => {
       <h2 className="testimonial-heading">WHAT THEY'RE TALKING ABOUT</h2>
 
       {feedbacks.length === 0 ? (
-        <p className="no-feedback-message">No feedback available.</p>
+        <p className="no-feedback-message">No feedback available. Be the first to share your experience!</p>
       ) : (
         <Swiper
           modules={[Autoplay]}

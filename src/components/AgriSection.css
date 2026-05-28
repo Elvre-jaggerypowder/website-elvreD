@@ -1,128 +1,206 @@
-/* Base Styles */
 .modern-agriculture-section {
-  position: relative;
-  padding: 60px 80px;
-  min-height: 140vh;
+  background: linear-gradient(135deg, #fffdf8 0%, #f5f0e8 100%);
   overflow: hidden;
-  z-index: 0;
 }
 
-.modern-agriculture-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1100px;
+/* FULL SIZE IMAGE AT TOP - like hero section */
+.agri-image-full {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.agri-grass-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Content wrapper */
+.agri-content-wrapper {
+  padding: 60px 5%;
+}
+
+.agri-container {
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.modern-agriculture-subheading {
-  font-weight: 500;
-  font-family: 'Livvic';
-  color: rgb(81, 66, 66);
-  font-size: 2rem;
-  margin-bottom: 20px;
+.agri-content {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.modern-agriculture-heading {
-  font-family: 'Livvicsemibold';
-  font-size: 2.7rem;
-  color: rgb(81, 66, 66);
+.agri-tag {
+  font-family: 'Livvic', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: #f1a40f;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 15px;
 }
 
-.modern-agriculture-description {
-  font-size: 18px;
-  font-weight: 500;
+.agri-heading {
+  font-family: 'Livvicsemibold', sans-serif;
+  font-size: 2.3rem;
+  color: #263C28;
+  margin-bottom: 40px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.agri-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 45px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.highlight-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.highlight-icon {
+  font-size: 2.2rem;
+}
+
+.highlight-item h4 {
+  font-family: 'Livvicsemibold', sans-serif;
+  font-size: 1.1rem;
+  color: #263C28;
+  margin-bottom: 8px;
+}
+
+.highlight-item p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.agri-description {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #444;
   text-align: justify;
-  color: black;
-  margin-top: 20px;
-  font-family: 'Quicksand';
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.modern-agriculture-img {
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  z-index: 1;
-  object-fit: cover;
-}
+/* ===== RESPONSIVE - ALL DEVICES ===== */
 
-/* Tablet Styles */
-@media (max-width: 1024px) {
-  .modern-agriculture-section {
-    padding: 50px 60px;
-  }
-
-  .modern-agriculture-heading {
-    font-size: 2.2rem;
-  }
-
-  .modern-agriculture-subheading {
-    font-size: 1.8rem;
-  }
-
-  .modern-agriculture-description {
-    font-size: 16px;
-  }
-}
-
-/* Mobile Styles */
+/* Mobile Phones */
 @media (max-width: 768px) {
-  .modern-agriculture-section {
-    padding: 0; /* remove side padding */
-    min-height: auto;
+  .agri-image-full {
+    height: 40vh;
+    min-height: 250px;
   }
-
-  .modern-agriculture-content {
-    margin-top: 4vh;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 10px; /* small padding only */
+  
+  .agri-content-wrapper {
+    padding: 40px 4%;
   }
-
-  .modern-agriculture-subheading {
-    font-size: clamp(1.4rem, 4vw, 1.5rem);
+  
+  .agri-heading {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
   }
-
-  .modern-agriculture-heading {
-    font-size: clamp(1.7rem, 5vw, 2rem);
+  
+  .agri-highlights {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
-
-  .modern-agriculture-description {
-    font-size: clamp(0.9rem, 3.5vw, 1rem);
-    line-height: 1.5;
+  
+  .highlight-item {
+    padding: 15px;
   }
-
-  .modern-agriculture-img {
-    position: relative;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
+  
+  .highlight-icon {
+    font-size: 1.6rem;
+  }
+  
+  .highlight-item h4 {
+    font-size: 0.95rem;
+  }
+  
+  .agri-description {
+    padding: 20px;
+    font-size: 0.85rem;
+    line-height: 1.7;
   }
 }
 
-/* Small Mobile Styles */
-@media (max-width: 480px) {
-  .modern-agriculture-section {
-    padding: 0; /* edge-to-edge on very small devices */
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .agri-image-full {
+    height: 50vh;
+    min-height: 350px;
   }
-
-  .modern-agriculture-heading {
-    font-size: clamp(1.5rem, 6vw, 1.8rem);
+  
+  .agri-content-wrapper {
+    padding: 50px 5%;
   }
-
-  .modern-agriculture-subheading {
-    font-size: clamp(1.2rem, 5vw, 1.4rem);
+  
+  .agri-heading {
+    font-size: 2rem;
   }
-
-  .modern-agriculture-description {
-    font-size: clamp(0.8rem, 4vw, 0.95rem);
+  
+  .agri-highlights {
+    gap: 20px;
   }
+  
+  .highlight-item {
+    padding: 15px;
+  }
+}
 
-  .modern-agriculture-img {
-    width: 100% !important;
-    height: auto;
-    margin-left: 0;
+/* Desktop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .agri-image-full {
+    height: 55vh;
+  }
+  
+  .agri-heading {
+    font-size: 2.1rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1441px) {
+  .agri-image-full {
+    height: 65vh;
+  }
+  
+  .agri-heading {
+    font-size: 2.5rem;
+  }
+  
+  .agri-description {
+    font-size: 1.05rem;
+  }
+}
+
+/* iOS Specific */
+@supports (-webkit-touch-callout: none) {
+  .agri-grass-full {
+    transform: translateZ(0);
   }
 }
