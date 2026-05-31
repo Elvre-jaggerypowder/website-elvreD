@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Contact.css";
 
+import { supabase } from "../supabaseClient";
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,62 +13,95 @@ const ContactUs = () => {
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("");
-    
-    // Save to localStorage
-    const existingFeedbacks = localStorage.getItem("elvreFeedbacks");
-    const feedbacks = existingFeedbacks ? JSON.parse(existingFeedbacks) : [];
-    
-    const newFeedback = {
-      id: Date.now(),
-      ...formData,
-      created_at: new Date().toISOString()
-    };
-    
-    feedbacks.unshift(newFeedback);
-    localStorage.setItem("elvreFeedbacks", JSON.stringify(feedbacks));
-    
-    setStatus("✅ Feedback Sent! Thank you for your message.");
-    setFormData({ name: "", label: "", message: "" });
-    
-    setTimeout(() => setStatus(""), 3000);
+
+    setStatus("Sending...");
+
+    const { error } = await supabase
+      .from("Feedbacks")
+      .insert([
+        {
+          name: formData.name,
+          label: formData.label,
+          message: formData.message,
+        },
+      ]);
+
+    if (error) {
+      console.log(error);
+      setStatus("❌ Failed to send feedback");
+    } else {
+      setStatus("✅ Feedback Sent!");
+
+      setFormData({
+        name: "",
+        label: "",
+        message: "",
+      });
+    }
+
+    setTimeout(() => {
+      setStatus("");
+    }, 3000);
   };
 
   return (
     <section id="contact" className="contact-section">
       <div className="contact-container">
-        <div className="contact-left" data-aos="fade-right">
+
+        <div
+          className="contact-left"
+          data-aos="fade-right"
+        >
           <h3>CONTACT NOW</h3>
+
           <h1>GET IN TOUCH NOW</h1>
+
           <p>
             PHONE
             <strong>
-              <br />+91 7060998050
+              <br />
+              +91 7060998050
               <br />
             </strong>
-            <strong>+91 7906396629</strong>
+
+            <strong>
+              +91 7906396629
+            </strong>
           </p>
+
           <p>
             EMAIL
             <strong>
-              <br />elvreofficals@gmail.com
+              <br />
+              elvreofficals@gmail.com
             </strong>
           </p>
+
           <p>
             ADDRESS
             <strong>
               <br />
-              1st Floor, Sangam Tent House, Jawalapur, Haridwar, Uttrakhand, 249407
+              1st Floor, Sangam Tent House,
+              Jawalapur, Haridwar,
+              Uttrakhand, 249407
             </strong>
           </p>
         </div>
 
-        <form className="contact-right" onSubmit={handleSubmit} data-aos="fade-left" data-aos-delay="200">
+        <form
+          className="contact-right"
+          onSubmit={handleSubmit}
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
           <input
             type="text"
             name="name"
@@ -75,6 +110,7 @@ const ContactUs = () => {
             onChange={handleChange}
             required
           />
+
           <input
             type="text"
             name="label"
@@ -83,6 +119,7 @@ const ContactUs = () => {
             onChange={handleChange}
             required
           />
+
           <textarea
             name="message"
             placeholder="Your Message"
@@ -90,8 +127,16 @@ const ContactUs = () => {
             onChange={handleChange}
             required
           />
-          <button type="submit">SEND FEEDBACK</button>
-          {status && <p className="status-message">{status}</p>}
+
+          <button type="submit">
+            SEND FEEDBACK
+          </button>
+
+          {status && (
+            <p className="status-message">
+              {status}
+            </p>
+          )}
         </form>
       </div>
     </section>
